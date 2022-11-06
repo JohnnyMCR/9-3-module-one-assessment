@@ -229,9 +229,8 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
  *  //> "Incredibles 2"
  */
 // 1. Return highest boxOffice amount
-// 2. Compare highest and lowest boxOffice amount
-// 3. 
-// 4. Return null if there's no movies
+// 2. Compare highest and lowest boxOffice amount 
+// 3. Return null if there's no movies
 function getBiggestBoxOfficeMovie(movies) {
   if(!movies.length)
   return null 
