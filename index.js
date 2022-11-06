@@ -55,7 +55,7 @@ function getAllMovieTitles(movies) {
 //2. If movies array empty, return 0
 //3. Compare highest with lowest metascore
 function getHighestMetascore(movies) {
-  highestMetaScore = 0 
+  let highestMetaScore = 0 
   for (let i = 0; i < movies.length; i++) {
     movieMetascore = Number(movies[i].metascore)
     if (movieMetascore > highestMetaScore){
@@ -79,16 +79,16 @@ function getHighestMetascore(movies) {
 //1. Average all IMDB ratings
 //2. Return a number
 //3. If movies array is empty, return `0`
-function getAverageIMDBRating(movies) {
-  sumMovieRatings = 0
-  allMovieRatings = movies.length
-  for (let i = 0; i < allMovieRatings; i ++){
-    theSumRating += Number(movies[i].imdbRating)
-  }
+function getAverageIMDBRating(movies) {}
+  let totalMovieRatings = 0
+  let allMovieRatings = movies.length
+  for (let i = 0; i < allMovieRatings; i++){
+    totalMovieRatings += Number(movies[i].imdbRating){
+    }
   if (!allMovieRatings){
-    return sumMovieRatings
+    return totalMovieRatings
   }
-  return sumMovieRatings/allMovieRatings
+  return totalMovieRatings/allMovieRatings
 }
 
 /**
@@ -102,8 +102,25 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
+
+// 1. Return an Object
+// 2. Keys are movie ratings and values are #ofMovies
+// 3. If movies array is empty, return Object {}
 function countByRating(movies) {
-  
+  let result = {};
+  let ratingScore = '';
+    if (movies.length === 0) {
+      return result;
+    }
+for (let i = 0; i < movies.length; i++){
+  ratingScore = movies[i].rated
+    if (!result[movies[i].rated]){
+      result[movies[i].rated] = 1
+  } else {
+      result[movies[i].rated] += 1
+    }
+  }
+return result
 }
 
 /**
@@ -120,7 +137,16 @@ function countByRating(movies) {
       // Toy Story 4
     };
  */
-function findById(movies, id) {}
+// 1. Return Movie object based on ID
+// 2. If movie array empty or ID doesn't match return null
+function findById(movies, id) {
+  let movieID = null
+  for  (let i = 0; i < movies.length; i++){
+    if (movies[i].imdbID === id){
+      movieID = movies[i]
+    } 
+  } return movieID
+}
 
 /**
  * filterByGenre()
@@ -142,7 +168,18 @@ function findById(movies, id) {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre(movies, genre) {}
+// 1. Return movie genre
+// 2. Case-sensitive: Change lower/capitalCase 
+// 3. If empty or no match, return []
+function filterByGenre(movies, genre) {
+  let result = [];
+  for (let i = 0; i < movies.length; i++){
+    if (movies[i].genre.toLowerCase().includes(genre.toLowerCase())){
+      result.push(movies[i])
+    }
+  }
+  return result
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -166,7 +203,19 @@ function filterByGenre(movies, genre) {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
+// 1. Return movie year equal to or less than year
+// 2. Comparing two different years
+// 3. Return [result]
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  let result = [];
+  for (let i = 0; i < movies.length; i++){
+    const years = movies[i].released.split(" ")
+    if (years[2] <= year){
+      result.push(movies[i])
+    }
+  }
+  return result
+}
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -179,6 +228,10 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
+// 1. Return highest boxOffice amount
+// 2. Compare highest and lowest boxOffice amount
+// 3. 
+// 4. Return null if there's no movies
 function getBiggestBoxOfficeMovie(movies) {}
 
 // Do not change anything below this line.
