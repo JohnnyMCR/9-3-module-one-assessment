@@ -79,12 +79,12 @@ function getHighestMetascore(movies) {
 //1. Average all IMDB ratings
 //2. Return a number
 //3. If movies array is empty, return `0`
-function getAverageIMDBRating(movies) {}
+function getAverageIMDBRating(movies) {
   let totalMovieRatings = 0
   let allMovieRatings = movies.length
   for (let i = 0; i < allMovieRatings; i++){
-    totalMovieRatings += Number(movies[i].imdbRating){
-    }
+    totalMovieRatings += Number(movies[i].imdbRating)
+  }  
   if (!allMovieRatings){
     return totalMovieRatings
   }
@@ -232,7 +232,15 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
 // 2. Compare highest and lowest boxOffice amount
 // 3. 
 // 4. Return null if there's no movies
-function getBiggestBoxOfficeMovie(movies) {}
+function getBiggestBoxOfficeMovie(movies) {
+  if(!movies.length)
+  return null 
+let numOneMovie = movies[0];
+for( let i = 1; i < movies.length; i++ ){
+
+}
+return numOneMovie.title
+}
 
 // Do not change anything below this line.
 module.exports = {
